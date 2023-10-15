@@ -1,14 +1,15 @@
 import React, {useState } from 'react'
 import fetchData from '../custom-axios'
 import Character from './Character'
+import {SingleCharacter} from '../types/index'
 
 
 const Characters = () => {
-    const [characters, setCharacters] = useState([])
+    const [characters  , setCharacters]  = useState<SingleCharacter[]>([] )
     const [info, setInfo] = useState([])
     const [count,setCount] =useState(0)
 
-    // getCharacters()
+    getCharacters()
     async function getCharacters(){
         const {info:information, results} = await fetchData('https://rickandmortyapi.com/api/character')
         setCharacters(results)
@@ -23,7 +24,7 @@ const Characters = () => {
         </h1>
 
         <div>
-            <Character character={characters[count]}/>
+            <Character  character={characters[count]}/>
         </div>
         
         
