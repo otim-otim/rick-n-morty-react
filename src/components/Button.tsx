@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Button = (props) => {
+interface Props {
+  label: 'Next' | 'Previous'
+}
+const Button = ({label} : Props) => {
   return (
     <>
-        <button>
-
-        </button>
+       
+        <button className="btn btn-primary">{label}</button>
     </>
   )
 }
