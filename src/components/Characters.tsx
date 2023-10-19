@@ -1,7 +1,8 @@
-import React, {useState } from 'react'
+import React, {useState, useEffect } from 'react'
 import fetchData from '../custom-axios'
 import Character from './Character'
 import {SingleCharacter} from '../types/index'
+import Button from './Button'
 
 
 const Characters = () => {
@@ -9,7 +10,15 @@ const Characters = () => {
     const [info, setInfo] = useState([])
     const [count,setCount] =useState(0)
 
-    getCharacters()
+    useEffect(() => {
+        // Code here will run after *every* render
+        getCharacters()
+      });
+    // useEffect(() => {
+    //     // Code here will run after *every* render
+    //     getCharacters()
+    //   });
+
     async function getCharacters(){
         const {info:information, results} = await fetchData('https://rickandmortyapi.com/api/character')
         setCharacters(results)
@@ -22,10 +31,16 @@ const Characters = () => {
         <h1 className="text-3xl font-bold underline">
             CHARACTERS
         </h1>
+        {characters.length > 0 ? (
+            <div>
+                    <Button label="Previous" onClick={()=> setCount(count => count - 1)}/>
+                    <Character character={characters[0]} />
+                    <Button label="Next" onClick={()=> setCount(count => count + 1)}/>
+                </div>
+            ) : (
+                <p>Loading data...</p>
+            )}
 
-        <div>
-            <Character  character={characters[count]}/>
-        </div>
         
         
 

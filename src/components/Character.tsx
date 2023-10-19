@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import {SingleCharacter} from '../types'
 
 type Props = {
@@ -13,7 +14,12 @@ const Character = ({character } : Props ) => {
         </h2>
 
         <div>
-        <img src={character.image} alt={character.name}  title={character.name}/>
+            <div className="avatar">
+                <div className="w-24 rounded">
+                    <img src={character.image} alt={character.name}  title={character.name} />
+                </div>
+            </div>
+        
 
         </div>
 

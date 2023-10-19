@@ -9,7 +9,6 @@ const Home = () => {
             RICK N MORTY!
         </h1>
         <div className='card m-80'>
-            image comes here
             <Characters />
 
         </div>
