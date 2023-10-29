@@ -14,10 +14,9 @@ const Characters = () => {
         // Code here will run after *every* render
         getCharacters()
       });
-    // useEffect(() => {
-    //     // Code here will run after *every* render
-    //     getCharacters()
-    //   });
+    useEffect(() => {
+      //get the next character
+      },[count]);
 
     async function getCharacters(){
         const {info:information, results} = await fetchData('https://rickandmortyapi.com/api/character')
@@ -34,7 +33,7 @@ const Characters = () => {
         {characters.length > 0 ? (
             <div>
                     <Button label="Previous" onClick={()=> setCount(count => count - 1)}/>
-                    <Character character={characters[0]} />
+                    <Character character={characters[count]} />
                     <Button label="Next" onClick={()=> setCount(count => count + 1)}/>
                 </div>
             ) : (
