@@ -25,6 +25,12 @@ const Characters = () => {
 
 
     }
+
+    function nextPreviousCharacter(action : 'next' | 'previous'){
+      console.log('clicked')
+      if(action === 'previous') setCount(count => count - 1)
+      else setCount(count => count + 1)
+    }
   return (
     <div>
         <h1 className="text-3xl font-bold underline">
@@ -32,9 +38,9 @@ const Characters = () => {
         </h1>
         {characters.length > 0 ? (
             <div>
-                    <Button label="Previous" onClick={()=> setCount(count => count - 1)}/>
+                    <Button label={"Previous"} onClick={() => nextPreviousCharacter('previous')}/>
                     <Character character={characters[count]} />
-                    <Button label="Next" onClick={()=> setCount(count => count + 1)}/>
+                    <Button label={"Next"}  onClick={()=> nextPreviousCharacter('next')}/>
                 </div>
             ) : (
                 <p>Loading data...</p>
